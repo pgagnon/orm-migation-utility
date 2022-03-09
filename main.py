@@ -20,7 +20,9 @@ from sqlalchemy import create_engine
 
 @click.command()
 @click.option("--source", help="Connection string to source database", required=True)
-@click.option("--destination", help="Connection string to destination database", required=True)
+@click.option(
+    "--destination", help="Connection string to destination database", required=True
+)
 def click_command(source: str, destination: str):
     src_engine = create_engine(source)
     dst_engine = create_engine(destination)
@@ -41,6 +43,8 @@ def click_command(source: str, destination: str):
         Trigger,
         Variable,
     ]:
+        print(f"Working on {model}")
+
         src_session = Source_Session()
         dst_session = Dest_Session()
         objs = src_session.query(model).all()
