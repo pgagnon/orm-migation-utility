@@ -1,5 +1,3 @@
-import airflow.models as airflow_models
-
 import click
 
 from airflow.models import (
@@ -21,11 +19,14 @@ from sqlalchemy import create_engine
 
 
 @click.command()
-@click.option("--source", help="Connection string to source database")
-@click.option("--destination", help="Connection string to destination database")
+@click.option("--source", help="Connection string to source database", required=True)
+@click.option("--destination", help="Connection string to destination database", required=True)
 def click_command(source: str, destination: str):
-    Source_Session = sessionmaker(bind=create_engine(source))
-    Dest_Session = sessionmaker(bind=create_engine(destination))
+    src_engine = create_engine(source)
+    dst_engine = create_engine(destination)
+
+    Source_Session = sessionmaker(bind=src_engine)
+    Dest_Session = sessionmaker(bind=dst_engine)
 
     for model in [
         Connection,
