@@ -7,7 +7,7 @@ authors = ["Philippe Gagnon <12717218+pgagnon@users.noreply.github.com>"]
 [tool.poetry.dependencies]
 python = "^3.9"
 click = "^8.0.4"
-apache-airflow = "^2.2.4"
+apache-airflow = "^2.3.4"
 apache-airflow-providers-mysql = "^2.2.0"
 apache-airflow-providers-postgres = "^3.0.0"
 apache-airflow-providers-elasticsearch = "^2.2.0"
